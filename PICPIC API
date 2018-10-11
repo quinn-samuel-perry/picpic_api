@@ -1,0 +1,87 @@
+PICPIC API
+
+
+http://cloud.picpicsocial.com/api/v1/events/ID.json?token=TOKEN&id=ID(same as b4)
+
+api is just to say we're using the api
+v1 is the version....dumbass
+events means we're looking for events...
+token is needed. reappropriated from v2.6.9.2 of Picpic Social - Device Server
+token is df95ad233ad8ac1fe6b0bc6f82a08811
+
+nope, actually turns out token is just provided by the app when you sign in
+
+checks www.seyeco.com/Service.asmx
+Therse actually some interesting stuff here
+facebook secret, madrill key, instagram_secret, twitter secret, weibo_appkey, weibo_appsecret
+this is some ajax stuff. could be unique, could be ubiquitous between everyoene. lets find out....l8r
+
+then seyeco.com/Updates/UpdateVersionPPS.xml
+which contains current eversion of picpic, (2.6.9.6),
+upadte url, and a changelogl. in an xml file. duh
+
+GET the sign_in page
+nab the authenticity token
+then log in :)
+
+========
+ROOT DIR
+========
+302 redirect to SIGN IN
+
+=======
+SIGN IN
+=======
+cloud.picpicsocial.com/sign_in
+
+POSTS
+utf8=%E2%9C%93
+that's a tick btw
+
+user[email]=testemail
+
+user[password]=testpass
+
+commit=Sign+in
+
+====
+TIME
+====
+cloud.picpicsocial.com/api/v1/subscription/time.json
+Gives you current time, in time : YYYY-MM-DDTHH:MM:SS.570Z
+
+=====
+TOKEN
+=====
+cloud.picpicsocial.com/api.v1/tokens.json
+
+returns token
+and expired_at 10 hours into the future. useful
+
+===================
+SUBSCRIPTION STATUS
+===================
+cloud.picpicsocial.com/api/v1/subscription.json?token=TOKEN
+
+
+===
+cloud.picpicsocial.com/api/v1/events.json?token=
+returns
+/
+/
+
+======
+PHOTOS
+======
+https://cloud.picpicsocial.com/api/v1/photos.json
+
+---content disposition?
+multitipart/form-data; boundary=-----------------------------28947758029299
+gzip, deflate
+
+returns
+
+{
+	'id:'id,
+	'url',url
+}
